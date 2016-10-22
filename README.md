@@ -74,14 +74,14 @@ until it says "stop!".
 
 Write a function that takes a callback,
 and returns a function that is passed a `read` function,
-and then calls it with a callback `cb(end, data)`
+and then calls it with a callback `next(end, data)`
 and if `end` is truthy then stop.
 
 Otherwise,
 print out `data` with `console.log(data)`,
 and then read again.
 
-(`cb` must be in the second position.
+(`next` must be in the second position.
 The first argument is `abort`
 but we will come back to that later.)
 
