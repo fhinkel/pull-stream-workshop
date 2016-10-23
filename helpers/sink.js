@@ -3,7 +3,7 @@ var tape = require('tape')
 var pull = require('pull-stream')
 
 module.exports = function (Log) {
-  tape('log sink is correct inteface', function (t) {
+  tape('log sink is correct interface', function (t) {
     t.equal(typeof Log, 'function', 'log is a function')
     var ended = false
     var sink = Log(function () {
