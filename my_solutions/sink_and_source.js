@@ -19,7 +19,7 @@ function arraySource(err, next) {
   }
 }
 
-// logger(arraySource);
+logger(arraySource);
 
 var read2  = source([2,4,6,8,10]);
 
@@ -28,3 +28,22 @@ var read2  = source([2,4,6,8,10]);
 var randomSource = require('../helpers/random')(10);
 
 logger(randomSource)
+
+var count = 0;
+function infiniteSource(err, next) {
+  if (err) {
+    next(err)
+  } else {
+    next(null, ++count);
+  }
+}
+
+var finiteThrough = require('./ex5.js')
+
+console.log("Now stopping infinity at 7.")
+logger(finiteThrough(7)(infiniteSource))
+
+console.log("Now stopping infinity at 5 in pull().")
+count = 0
+var pull = require('../ex4')
+pull(infiniteSource, finiteThrough(5), logger)
